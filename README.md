@@ -46,7 +46,7 @@ Bei erkannten Fehlern/Problemen können diese gerne dokumentiert werden, damit i
   Schritt 1 automatisch — unterstützt werden Arch, Debian/Ubuntu, Fedora und openSUSE.
 - Die ETS-`setup.exe` (musst du selbst von der KNX Association beziehen)
 
-## Mac / iOS Support
+## Mac / macOS Support
 
 - ist in Bearbeitung
 
