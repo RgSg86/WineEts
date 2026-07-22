@@ -37,6 +37,7 @@ Bei erkannten Fehlern/Problemen können diese gerne dokumentiert werden, damit i
 
 - Bei hohen Auflösungen kann die Performance leiden (bisher kein Hardware-Rendering)
 - Einige DCA/ Addons laufen nicht (konkrete Liste ist in Bearbeitung)
+- Der 32-Bit-Kompatibilitätsmodus funktioniert nicht sauber, ebenso alte 32bit Plugins. 
 
 ## Voraussetzungen
 
