@@ -1,9 +1,42 @@
 # WineEts
 
-Richtet die **ETS 6.4.1** (KNX-Software) unter **Wine** ein — als geführtes
+Richtet die **ETS 6.4.1** (KNX-Software) unter **Wine** ein als geführtes
 whiptail-Menü im Terminal (TUI). Die ETS selbst wird **unverändert** installiert
-und entspricht 1:1 einer Windows-Installation; das Skript bereitet nur die
+und entspricht 1:1 einer Windows-Installation, das Skript bereitet nur die
 Wine-Umgebung vor. Es modifiziert **keine** ETS/KNX-Binaries.
+
+## Umfang & Vorgehen bei Problemen
+
+Das TUI behandelt ausschließlich die **Installation und Einrichtung der
+Wine-Umgebung**, **nicht** die ETS selbst. Die ETS-Binaries werden zu keinem
+Zeitpunkt angefasst.
+
+Treten **innerhalb der ETS** Probleme auf (schwarzes Fenster, Render-Fehler,
+Abstürze, nicht funktionierende Addons o. Ä.), wird die Lösung deshalb **direkt auf Wine-Ebene** angesetzt mit Patches an Wine selbst und **nie** durch Eingriffe in die ETS. Fehler in der ETS sind damit grundsätzlich ein Wine-Thema, kein Thema für diesen Installer. 
+
+## Upstream-Wine-Fixes für ETS
+
+ETS-Probleme <--> Wine Probleme wurden nicht im Tool umgangen, sondern **direkt in
+Wine behoben** und upstream beigetragen. Deshalb läuft ETS 6 ab **Wine 11.10**
+auf unverändertem Stock-Wine, ein gepatchtes Wine ist nicht mehr nötig.
+
+Beigetragene Merge Requests bei [WineHQ](https://gitlab.winehq.org/wine/wine) bezüglich der ETS:
+
+| MR | Fix | ETS-Bezug | Status |
+|----|-----|-----------|--------|
+| [!10604](https://gitlab.winehq.org/wine/wine/-/merge_requests/10604) | `ntoskrnl`/`cfgmgr32`: Device-Tree-Properties + `CM_Get_Parent` | KNX-USB-Lizenz-Dongle wird erkannt | gemergt — Wine 11.10 |
+| [!10565](https://gitlab.winehq.org/wine/wine/-/merge_requests/10565) | `shcore`: Set/GetCurrentProcessExplicitAppUserModelID | Taskbar-Identität | gemergt — Wine 11.7 |
+| [!10329](https://gitlab.winehq.org/wine/wine/-/merge_requests/10329) | `windowscodecs` (WIC): BlackWhite-Pixelformat | Bild-/Icon-Dekodierung | gemergt — Wine 11.5 |
+| [!10301](https://gitlab.winehq.org/wine/wine/-/merge_requests/10301) | `hidclass.sys`: korrekter DeviceType für HID-PDOs | USB-Geräte / Dongle | gemergt — Wine 11.5 |
+| [!10300](https://gitlab.winehq.org/wine/wine/-/merge_requests/10300) | `jscript`: leerer String → NULL in `GetScriptDispatch` | Scripting / WebView2 | gemergt — Wine 11.5 |
+
+
+Bei erkannten Fehlern/Problemen können diese gerne dokumentiert werden, damit ich diese in Wine selber patchen kann.
+
+## Bekannte Probleme:
+
+- Bei hohen Auflösungen kann die Performance leiden (bisher kein Hardware-Rendering)
+- Einige DCA/ Addons laufen nicht (konkrete Liste ist in Bearbeitung)
 
 ## Voraussetzungen
 
@@ -12,7 +45,10 @@ Wine-Umgebung vor. Es modifiziert **keine** ETS/KNX-Binaries.
 - Die restlichen Pakete (winetricks, fonttools, cabextract, …) installiert
   Schritt 1 automatisch — unterstützt werden Arch, Debian/Ubuntu, Fedora und openSUSE.
 - Die ETS-`setup.exe` (musst du selbst von der KNX Association beziehen)
-- Optional: KNX-USB-Lizenz-Dongle
+
+## Mac / iOS Support
+
+- ist in Bearbeitung
 
 ## Nutzung
 
