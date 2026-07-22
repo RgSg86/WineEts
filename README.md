@@ -1,3 +1,5 @@
+**Deutsch** | [English](README.en.md)
+
 # WineEts
 
 Richtet die **ETS 6.4.1** (KNX-Software) unter **Wine** ein als geführtes
@@ -61,6 +63,10 @@ Im Menü die Schritte **1 bis 11** der Reihe nach abarbeiten (oder **A** für al
 1–10 am Stück). Jeder Schritt hat einen eigenen PRÜFEN-Block, der zeigt, ob er
 sauber durchgelaufen ist. Details landen in einer Logdatei (Pfad wird beim Start
 angezeigt).
+
+**Sprache:** Die Oberfläche gibt es auf Deutsch und Englisch — automatisch aus
+deiner Locale (`$LANG`) gewählt, per `WINEETS_LANG=en` bzw. `WINEETS_LANG=de`
+erzwingbar oder zur Laufzeit über Menüpunkt **S** umschaltbar.
 
 ### Die Schritte im Überblick
 
