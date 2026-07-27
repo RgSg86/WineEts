@@ -19,13 +19,15 @@ Abstürze, nicht funktionierende Addons o. Ä.), wird die Lösung deshalb **dire
 ## Upstream-Wine-Fixes für ETS
 
 ETS-Probleme <--> Wine Probleme wurden nicht im Tool umgangen, sondern **direkt in
-Wine behoben** und upstream beigetragen. Deshalb läuft ETS 6 ab **Wine 11.10**
-auf unverändertem Stock-Wine, ein gepatchtes Wine ist nicht mehr nötig.
+Wine behoben** und upstream beigetragen. Der Großteil ist ab **Wine 11.10** in
+unverändertem Stock-Wine behoben. 
 
-Beigetragene Merge Requests bei [WineHQ](https://gitlab.winehq.org/wine/wine) bezüglich der ETS:
+Beigetragene Merge Requests bei [WineHQ](https://gitlab.winehq.org/wine/wine) bezüglich der ETS (gemergt und eingereicht):
 
 | MR | Fix | ETS-Bezug | Status |
 |----|-----|-----------|--------|
+| [!11472](https://gitlab.winehq.org/wine/wine/-/merge_requests/11472) | `msi`: Öffnungsmodus von `Installer.OpenDatabase` als Integer statt Pfad-String behandeln | **KNX-Secure-Gerät: Projektpasswort setzen** (crashte ETS stumm) | eingereicht — in Review |
+| [!11473](https://gitlab.winehq.org/wine/wine/-/merge_requests/11473) | `ole32`: `IClassFactory::LockServer` liefert `S_OK` statt `E_NOTIMPL` | Nebenbefund beim Secure-Debugging (COM-Marshalling) | eingereicht — in Review |
 | [!10604](https://gitlab.winehq.org/wine/wine/-/merge_requests/10604) | `ntoskrnl`/`cfgmgr32`: Device-Tree-Properties + `CM_Get_Parent` | KNX-USB-Lizenz-Dongle wird erkannt | gemergt — Wine 11.10 |
 | [!10565](https://gitlab.winehq.org/wine/wine/-/merge_requests/10565) | `shcore`: Set/GetCurrentProcessExplicitAppUserModelID | Taskbar-Identität | gemergt — Wine 11.7 |
 | [!10329](https://gitlab.winehq.org/wine/wine/-/merge_requests/10329) | `windowscodecs` (WIC): BlackWhite-Pixelformat | Bild-/Icon-Dekodierung | gemergt — Wine 11.5 |
@@ -39,7 +41,9 @@ Bei erkannten Fehlern/Problemen können diese gerne dokumentiert werden, damit i
 
 - Bei hohen Auflösungen kann die Performance leiden (bisher kein Hardware-Rendering)
 - Einige DCA/ Addons laufen nicht (konkrete Liste ist in Bearbeitung)
-- Der 32-Bit-Kompatibilitätsmodus funktioniert nicht sauber, ebenso alte 32bit Plugins. 
+- Der 32-Bit-Kompatibilitätsmodus funktioniert nicht sauber, ebenso alte 32bit Plugins.
+- **KNX-Secure-Gerät:** Das Setzen eines Projektpassworts crasht ETS mit Stock-Wine
+  stumm. Fix eingereicht, aber noch in keinem Release. Siehe MR 11472 auf WineHQ.
 
 ## Voraussetzungen
 

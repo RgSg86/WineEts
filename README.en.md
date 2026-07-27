@@ -20,14 +20,15 @@ ETS are thus fundamentally a Wine matter, not a matter for this installer.
 ## Upstream Wine fixes for ETS
 
 ETS problems are ultimately Wine problems — they were not worked around in the
-tool but **fixed directly in Wine** and contributed upstream. That is why ETS 6
-runs on unmodified stock Wine from **Wine 11.10** onwards; a patched Wine is no
-longer needed.
+tool but **fixed directly in Wine** and contributed upstream. Most of them are
+fixed in unmodified stock Wine from **Wine 11.10** onwards. 
 
-Contributed merge requests at [WineHQ](https://gitlab.winehq.org/wine/wine) regarding ETS:
+Contributed merge requests at [WineHQ](https://gitlab.winehq.org/wine/wine) regarding ETS (merged and submitted):
 
 | MR | Fix | ETS relevance | Status |
 |----|-----|---------------|--------|
+| [!11472](https://gitlab.winehq.org/wine/wine/-/merge_requests/11472) | `msi`: treat the `Installer.OpenDatabase` open mode as an integer, not a path string | **KNX Secure device: setting the project password** (silently crashed ETS) | submitted — in review |
+| [!11473](https://gitlab.winehq.org/wine/wine/-/merge_requests/11473) | `ole32`: `IClassFactory::LockServer` returns `S_OK` instead of `E_NOTIMPL` | side finding while debugging the Secure crash (COM marshalling) | submitted — in review |
 | [!10604](https://gitlab.winehq.org/wine/wine/-/merge_requests/10604) | `ntoskrnl`/`cfgmgr32`: device-tree properties + `CM_Get_Parent` | KNX USB licence dongle is detected | merged — Wine 11.10 |
 | [!10565](https://gitlab.winehq.org/wine/wine/-/merge_requests/10565) | `shcore`: Set/GetCurrentProcessExplicitAppUserModelID | taskbar identity | merged — Wine 11.7 |
 | [!10329](https://gitlab.winehq.org/wine/wine/-/merge_requests/10329) | `windowscodecs` (WIC): BlackWhite pixel format | image/icon decoding | merged — Wine 11.5 |
@@ -41,6 +42,8 @@ If you run into bugs/problems, feel free to document them so I can patch them in
 - At high resolutions performance can suffer (no hardware rendering yet)
 - Some DCAs/add-ons do not run (a concrete list is in progress)
 - The 32-bit compatibility mode does not work cleanly, and neither do old 32-bit plugins
+- **KNX Secure device:** setting a project password silently crashes ETS on stock
+  Wine. Fix ready, but not in Wine at the moment. See MR 11472 on WineHQ. 
 
 ## Requirements
 
